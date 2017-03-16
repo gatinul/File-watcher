@@ -17,3 +17,4 @@ npm run dev
 
 ## 页面截图
 
+![图片](https://github.com/gatinul/File-watcher/raw/master/Screenshots/screen.png)
