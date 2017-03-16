@@ -2,11 +2,13 @@
 一个文件监控以及上传系统
 ## 使用
 
-```
+```bash
 # clone项目到本地
 git clone https://github.com/gatinul/File-watcher.git
+
 # 安装依赖
 npm install 
+
 # 调试代码前 在localhost:3000 启动项目
 npm run dev
 ```
