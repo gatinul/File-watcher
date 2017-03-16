@@ -17,11 +17,8 @@ npm run dev
 
 ## 页面截图
 
-<<<<<<< HEAD
 ![图片](https://github.com/gatinul/File-watcher/raw/master/Screenshots/screen.png)
-=======
-![image](https://github.com/gatinul/File-watcher/views/screen.png)
->>>>>>> 2593763f2f5523325fdfb87a42a1deebd3a66360
+
 
 ## todo
 
