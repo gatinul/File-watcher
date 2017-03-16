@@ -17,4 +17,15 @@ npm run dev
 
 ## 页面截图
 
+<<<<<<< HEAD
 ![图片](https://github.com/gatinul/File-watcher/raw/master/Screenshots/screen.png)
+=======
+![image](https://github.com/gatinul/File-watcher/views/screen.png)
+>>>>>>> 2593763f2f5523325fdfb87a42a1deebd3a66360
+
+## todo
+
+1. 页面中增加选择要监听的目录
+2. 判断改变的文件为js，css，html，image 传入对应服务器文件中
+3. gulp-ftp , gulp-svn 上传文件 目前执行的gulp-uglify试试效果
+4. 文件名重复时，只显示最后更改的一行
