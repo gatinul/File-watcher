@@ -4,35 +4,68 @@
 		<meta charset="utf-8">
 		<title></title>
 		<link rel="stylesheet" href="/build/css/bootstrap.css">
+		<link rel="stylesheet" href="/build/jstree/themes/default/style.min.css">
 		<style media="screen">
+			body{
+				overflow-x: hidden;
+			}
 			td{
 				text-align: center;
 			}
 			th{
 				text-align: center;
 			}
+			.treeView{
+				position: fixed;
+				top: 20px;
+			}
+			.refresh{
+				position: fixed;
+				bottom: 100px
+			}
+			.refresh .btn{
+
+				display: block;
+				margin-top: 10px;
+				margin-left: 20px;
+				width: 120px;
+			}
 		</style>
 	</head>
 	<body>
-		<button class="btn btn-default" type="button" name="button" id="refresh">刷新</button>
-		<table id="app" class="table">
-			<thead>
-				<th>文件名</th>
-				<th>修改时间</th>
-				<th>上传状态</th>
-			</thead>
-			<tr v-for="item in items">
-				<td v-for="file in item">{{file}}</td>
-				<td v-if = "show">
-					<div class="btn-group btn-group-sm" role="group" aria-label="...">
-						<button type="button" class="btn btn-default">SVN</button>
-  						<button v-on:click="testEnv($event)" type="button" class="btn btn-default">211</button>
-						<button type="button" class="btn btn-default">147</button>
-					</div>
-				</td>
-			</tr>
-		</table>
+		<div class="row">
+			<div class="col-md-2">
+				<div class="treeView" id="treeView"></div>
+				<div class="refresh">
+					<button class="btn btn-default" type="button" name="button" id="sure">确定</button>
+					<button class="btn btn-default" type="button" name="button" id="refresh">刷新</button>
+				</div>
+			</div>
+			<div class="col-md-9">
+				<table id="app" class="table">
+					<thead>
+						<th>文件名</th>
+						<th>修改时间</th>
+						<th>上传状态</th>
+					</thead>
+					<tr v-for="item in items">
+						<td v-for="file in item">{{file}}</td>
+						<td v-if = "show">
+							<div class="btn-group btn-group-sm" role="group" aria-label="...">
+								<button type="button" class="btn btn-default">SVN</button>
+									<button v-on:click="testEnv($event)" type="button" class="btn btn-default">211</button>
+								<button type="button" class="btn btn-default">147</button>
+							</div>
+						</td>
+					</tr>
+				</table>
+
+			</div>
+			<div class="col-md-1"></div>
+		</div>
+
 		<script src="/build/jquery-1.11.3.js"></script>
+		<script src="/build/jstree/jstree.min.js"></script>
 		<script src="/dist/index.js"></script>
 	</body>
 </html>

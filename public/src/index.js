@@ -1,5 +1,21 @@
 import Vue from 'vue'
 import axios from 'axios'
+import {ay_mssys} from '../base/jstree.js'
+import fileWatcher from '../base/fileWatcher';
+
+$(()=>{
+    new fileWatcher();
+		$("#treeView").jstree({
+							'core' : {
+									"multiple" : false,
+									'data' : ay_mssys,
+									'dblclick_toggle': false          //禁用tree的双击展开
+							},
+							"plugins" : ["search"]
+	});
+});
+
+var folder = []
 
 var app = new Vue({
 	el:'#app',
@@ -31,20 +47,20 @@ var app = new Vue({
 	}
 })
 
-$('#refresh').click(function(event) {
-	/* Act on the event */
-	axios.get('/refresh').then((response)=>{
-		var data = response.data;
-		if(data){
-			app.show = true;
-		}
-		var arr = data.split('-');
-		var items = []
-		for(var i=0;i<arr.length;i++){
-			console.log(arr[i])
-			var arr1 = arr[i].split(',')
-			items.push(arr1);
-		}
-		app.items = items;
-	})
+$("#treeView").on("changed.jstree", function (e, data) {
+		//console.log("The selected nodes are:");
+		//console.log(data.node.id);               //选择的node id
+    folder = [];
+    folder.push(data.node.text);
+    console.log(folder);            //选择的node text
 });
+
+$("#treeView").bind("select_node.jstree", function (e, data) {
+		if(data.node.id !=1 ){                           //排除第一个节点(2011民事案由)
+				data.instance.toggle_node(data.node);        //单击展开下面的节点
+		}
+});
+
+
+
+export {app,folder}

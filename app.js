@@ -21,25 +21,28 @@ app.engine('.html', ejs.__express);
 app.set('view engine', 'html');
 
 
-var watcher = chokidar.watch('public', {
-  ignored: /(^\..+)|(.+[\/\\]\..+)|(.+?\_modules$)/,
-  persistent: true,
-});
+app.post('/sure',jsonParser,function(req,res){
+  console.log('1-'+req.body.folder)
+  var watcher = chokidar.watch(req.body.folder, {
+    ignored: /(^\..+)|(.+[\/\\]\..+)|(.+?\_modules$)/,
+    persistent: true,
+  });
 
-var log = console.log.bind(console);
+  var log = console.log.bind(console);
+    watcher.on('change',path => {
+      var time=sd.format(new Date(), 'YYYY/MM/DD HH:mm');
+      log(`File ${path} has been changed in ${time}`);
+        var array = [];
+        array.push(path);
+        array.push(time);
+        arr.push(array);
+    })
+})
 
-	watcher.on('change',path => {
-		var time=sd.format(new Date(), 'YYYY/MM/DD HH:mm');
-		log(`File ${path} has been changed in ${time}`);
-			var array = [];
-			array.push(path);
-			array.push(time);
-			arr.push(array);
-	 })
+
 
 app.get('/',routes.main);
 app.get('/refresh',function(req,res){
-	console.log('2-'+arr)
 	res.end(arr.join('-'))
 })
 // app.post('/211',function(req,res){
